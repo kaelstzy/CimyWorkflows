@@ -37,7 +37,7 @@ function NewConversationContent() {
   return (
     <div className="min-h-screen">
       <AppNav />
-      <main className="mx-auto max-w-2xl px-6 py-8">
+      <main className="mx-auto max-w-2xl px-4 py-6 sm:px-6 sm:py-8">
         <h1 className="mb-1 text-lg font-semibold text-neutral-100">New conversation</h1>
         <p className="mb-6 text-sm text-neutral-500">
           Add message turns below. This will be saved as a new{" "}
@@ -48,7 +48,7 @@ function NewConversationContent() {
 
         {error && <p className="mt-4 text-sm text-red-400">{error}</p>}
 
-        <div className="mt-6 flex justify-end gap-3">
+        <div className="mt-6 flex flex-wrap justify-end gap-3">
           <button
             onClick={() => router.push("/conversations")}
             className="rounded-md border border-neutral-700 px-4 py-2 text-sm text-neutral-300 hover:border-neutral-500"

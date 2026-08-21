@@ -34,8 +34,8 @@ function DashboardContent() {
   return (
     <div className="min-h-screen">
       <AppNav />
-      <main className="mx-auto max-w-5xl px-6 py-8">
-        <div className="mb-6 flex items-center justify-between">
+      <main className="mx-auto max-w-5xl px-4 py-6 sm:px-6 sm:py-8">
+        <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
           <h1 className="text-lg font-semibold text-neutral-100">Dashboard</h1>
           <Link
             href="/conversations/new"
@@ -98,13 +98,15 @@ function DashboardContent() {
                     <Link
                       key={c.id}
                       href={`/conversations/${c.id}`}
-                      className="flex items-center justify-between px-4 py-3 text-sm transition hover:bg-neutral-900"
+                      className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1 px-4 py-3 text-sm transition hover:bg-neutral-900"
                     >
-                      <div className="flex items-center gap-3">
-                        <span className="font-mono text-neutral-400">{c.id}</span>
+                      <div className="flex min-w-0 items-center gap-3">
+                        <span className="truncate font-mono text-neutral-400">{c.id}</span>
                         <StatusBadge status={c.status} />
                       </div>
-                      <span className="text-neutral-500">{c.messages.length} messages</span>
+                      <span className="shrink-0 text-neutral-500">
+                        {c.messages.length} messages
+                      </span>
                     </Link>
                   ))}
                 </div>

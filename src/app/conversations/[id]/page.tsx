@@ -76,7 +76,9 @@ function EditConversationContent() {
     return (
       <div className="min-h-screen">
         <AppNav />
-        <main className="mx-auto max-w-2xl px-6 py-8 text-sm text-neutral-500">Loading…</main>
+        <main className="mx-auto max-w-2xl px-4 py-6 text-sm text-neutral-500 sm:px-6 sm:py-8">
+          Loading…
+        </main>
       </div>
     );
   }
@@ -85,7 +87,7 @@ function EditConversationContent() {
     return (
       <div className="min-h-screen">
         <AppNav />
-        <main className="mx-auto max-w-2xl px-6 py-8">
+        <main className="mx-auto max-w-2xl px-4 py-6 sm:px-6 sm:py-8">
           <p className="text-sm text-neutral-400">Conversation {id} does not exist.</p>
         </main>
       </div>
@@ -95,10 +97,10 @@ function EditConversationContent() {
   return (
     <div className="min-h-screen">
       <AppNav />
-      <main className="mx-auto max-w-2xl px-6 py-8">
-        <div className="mb-6 flex items-center justify-between">
-          <div>
-            <h1 className="font-mono text-lg font-semibold text-neutral-100">{id}</h1>
+      <main className="mx-auto max-w-2xl px-4 py-6 sm:px-6 sm:py-8">
+        <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
+          <div className="min-w-0">
+            <h1 className="truncate font-mono text-lg font-semibold text-neutral-100">{id}</h1>
             {meta?.updatedAt ? (
               <p className="text-xs text-neutral-500">
                 Last updated {new Date(String(meta.updatedAt)).toLocaleString()}
@@ -128,16 +130,16 @@ function EditConversationContent() {
 
         {error && <p className="mt-4 text-sm text-red-400">{error}</p>}
 
-        <div className="mt-6 flex justify-between">
+        <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <button
             onClick={handleDelete}
             disabled={deleting}
-            className="rounded-md border border-red-500/30 px-4 py-2 text-sm text-red-400 hover:bg-red-500/10 disabled:opacity-50"
+            className="order-2 rounded-md border border-red-500/30 px-4 py-2 text-sm text-red-400 hover:bg-red-500/10 disabled:opacity-50 sm:order-1"
           >
             {deleting ? "Deleting…" : "Delete conversation"}
           </button>
 
-          <div className="flex gap-3">
+          <div className="order-1 flex gap-3 sm:order-2">
             <button
               onClick={() => router.push("/conversations")}
               className="rounded-md border border-neutral-700 px-4 py-2 text-sm text-neutral-300 hover:border-neutral-500"

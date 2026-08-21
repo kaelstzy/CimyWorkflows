@@ -43,7 +43,7 @@ export function MessageEditor({ messages, onChange }: MessageEditorProps) {
           key={index}
           className="rounded-lg border border-neutral-800 bg-neutral-900 p-4"
         >
-          <div className="mb-2 flex items-center justify-between">
+          <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
             <div className="flex overflow-hidden rounded-md border border-neutral-700">
               {(["user", "assistant"] as MessageRole[]).map((role) => (
                 <button
@@ -100,7 +100,7 @@ export function MessageEditor({ messages, onChange }: MessageEditorProps) {
             onChange={(e) => updateMessage(index, { content: e.target.value })}
             placeholder={message.role === "user" ? "What the user says…" : "How the assistant responds…"}
             rows={3}
-            className="w-full resize-y rounded-md border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-100 outline-none focus:border-neutral-400"
+            className="w-full resize-y rounded-md border border-neutral-700 bg-neutral-950 px-3 py-2 text-sm text-neutral-100 outline-none [overflow-wrap:anywhere] focus:border-neutral-400"
           />
         </div>
       ))}

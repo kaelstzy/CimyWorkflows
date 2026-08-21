@@ -7,7 +7,18 @@ body {
   height: 100%;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 body {
   background-color: #0b0c0f;
   color: #e6e6e6;
+  overflow-x: hidden;
+}
+
+/* Defensive default: long unbroken tokens (URLs, IDs) wrap instead of
+   forcing their container — and the page — wider than the viewport. */
+* {
+  overflow-wrap: break-word;
 }

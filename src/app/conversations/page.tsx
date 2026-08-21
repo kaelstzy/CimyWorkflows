@@ -107,10 +107,10 @@ function ConversationListContent() {
   return (
     <div className="min-h-screen">
       <AppNav />
-      <main className="mx-auto max-w-5xl px-6 py-8">
+      <main className="mx-auto max-w-5xl px-4 py-6 sm:px-6 sm:py-8">
         <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
           <h1 className="text-lg font-semibold text-neutral-100">Conversations</h1>
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
             <button
               onClick={handleExport}
               className="rounded-md border border-neutral-700 px-3 py-2 text-sm text-neutral-300 hover:border-neutral-500 hover:text-neutral-100"
@@ -149,7 +149,7 @@ function ConversationListContent() {
               e.preventDefault();
               applyFilters(statusFilter, searchInput.trim());
             }}
-            className="flex flex-1 min-w-[200px] gap-2"
+            className="flex min-w-[160px] flex-1 gap-2"
           >
             <input
               value={searchInput}
@@ -183,25 +183,28 @@ function ConversationListContent() {
             {items.map((c) => (
               <div
                 key={c.id}
-                className="flex items-center justify-between gap-4 px-4 py-3 text-sm transition hover:bg-neutral-900"
+                className="flex flex-col gap-2 px-4 py-3 text-sm transition hover:bg-neutral-900 sm:flex-row sm:items-center sm:justify-between sm:gap-4"
               >
-                <Link href={`/conversations/${c.id}`} className="flex flex-1 items-center gap-3">
-                  <span className="font-mono text-neutral-400">{c.id}</span>
+                <Link
+                  href={`/conversations/${c.id}`}
+                  className="flex min-w-0 flex-1 flex-wrap items-center gap-x-3 gap-y-1"
+                >
+                  <span className="shrink-0 font-mono text-neutral-400">{c.id}</span>
                   <StatusBadge status={c.status} />
-                  <span className="truncate text-neutral-500">
+                  <span className="min-w-0 truncate text-neutral-500">
                     {c.messages[0]?.content ?? ""}
                   </span>
                 </Link>
-                <span className="shrink-0 text-xs text-neutral-500">
-                  {c.messages.length} msgs
-                </span>
-                <button
-                  onClick={() => handleDelete(c.id)}
-                  disabled={deletingId === c.id}
-                  className="shrink-0 rounded px-2 py-1 text-xs text-red-400/80 hover:text-red-400 disabled:opacity-40"
-                >
-                  {deletingId === c.id ? "Deleting…" : "Delete"}
-                </button>
+                <div className="flex shrink-0 items-center justify-between gap-3 sm:justify-end">
+                  <span className="text-xs text-neutral-500">{c.messages.length} msgs</span>
+                  <button
+                    onClick={() => handleDelete(c.id)}
+                    disabled={deletingId === c.id}
+                    className="shrink-0 rounded px-2 py-1 text-xs text-red-400/80 hover:text-red-400 disabled:opacity-40"
+                  >
+                    {deletingId === c.id ? "Deleting…" : "Delete"}
+                  </button>
+                </div>
               </div>
             ))}
           </div>

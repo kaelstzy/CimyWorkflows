@@ -64,7 +64,7 @@ function DuplicatesContent() {
   return (
     <div className="min-h-screen">
       <AppNav />
-      <main className="mx-auto max-w-3xl px-6 py-8">
+      <main className="mx-auto max-w-3xl px-4 py-6 sm:px-6 sm:py-8">
         <h1 className="mb-1 text-lg font-semibold text-neutral-100">Potential duplicates</h1>
         <p className="mb-6 text-sm text-neutral-500">
           Flagged for review only — nothing here is deleted or merged automatically. You
@@ -86,25 +86,25 @@ function DuplicatesContent() {
                   key={key}
                   className="rounded-lg border border-neutral-800 bg-neutral-900 p-4"
                 >
-                  <div className="mb-3 flex items-center justify-between">
-                    <div className="flex items-center gap-2 text-sm">
+                  <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
+                    <div className="flex min-w-0 flex-wrap items-center gap-2 text-sm">
                       <Link
                         href={`/conversations/${pair.conversationId}`}
-                        className="font-mono text-neutral-200 underline"
+                        className="truncate font-mono text-neutral-200 underline"
                       >
                         {pair.conversationId}
                       </Link>
-                      <span className="text-neutral-600">↔</span>
+                      <span className="shrink-0 text-neutral-600">↔</span>
                       <Link
                         href={`/conversations/${pair.matchedConversationId}`}
-                        className="font-mono text-neutral-200 underline"
+                        className="truncate font-mono text-neutral-200 underline"
                       >
                         {pair.matchedConversationId}
                       </Link>
                     </div>
                     <span
                       className={
-                        "rounded-full border px-2 py-0.5 text-xs font-medium " +
+                        "shrink-0 rounded-full border px-2 py-0.5 text-xs font-medium " +
                         (pair.reason === "exact"
                           ? "border-red-500/30 bg-red-500/10 text-red-400"
                           : "border-amber-500/30 bg-amber-500/10 text-amber-400")
@@ -115,7 +115,7 @@ function DuplicatesContent() {
                     </span>
                   </div>
 
-                  <div className="flex gap-2">
+                  <div className="flex flex-wrap gap-2">
                     <button
                       onClick={() => handleIgnore(pair)}
                       disabled={busyKey === key}

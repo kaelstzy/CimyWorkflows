@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@/lib/firebase/client";
@@ -38,9 +39,16 @@ export default function LoginPage() {
 
   return (
     <div className="flex min-h-screen items-center justify-center px-4">
-      <div className="w-full max-w-sm rounded-xl border border-neutral-800 bg-neutral-900 p-8 shadow-lg">
-        <h1 className="mb-1 text-xl font-semibold text-neutral-100">Cimy Dataset Workbench</h1>
-        <p className="mb-6 text-sm text-neutral-400">Sign in to continue</p>
+      <div className="w-full max-w-sm rounded-xl border border-neutral-800 bg-neutral-900 p-6 shadow-lg sm:p-8">
+        <div className="mb-6 flex items-center gap-3">
+          <Image src="/cimy-logo.png" alt="Cimy" width={32} height={32} className="h-8 w-8" />
+          <div>
+            <h1 className="text-lg font-semibold text-neutral-100 sm:text-xl">
+              Cimy Dataset Workbench
+            </h1>
+            <p className="text-sm text-neutral-400">Sign in to continue</p>
+          </div>
+        </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
