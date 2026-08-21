@@ -184,7 +184,7 @@ export function AppNav() {
                         : "text-neutral-300 hover:bg-neutral-800/60 hover:text-neutral-100")
                     }
                   >
-                    <Icon className="h-4.5 w-4.5 shrink-0 text-neutral-400" />
+                    <Icon className="h-[18px] w-[18px] shrink-0 text-neutral-400" />
                     <span className="truncate">{link.label}</span>
                   </Link>
                 );
