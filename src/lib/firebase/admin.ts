@@ -29,8 +29,13 @@ function getAdminApp(): App {
   }
 
   return initializeApp({
-    credential: cert({ projectId, clientEmail, privateKey }),
-  });
+  projectId,
+  credential: cert({
+    projectId,
+    clientEmail,
+    privateKey,
+  }),
+});
 }
 
 const adminApp = getAdminApp();
