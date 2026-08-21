@@ -64,7 +64,7 @@ export function AppNav() {
   useEffect(() => {
     if (!menuOpen) return;
 
-    function handlePointerDown(event: MouseEvent | TouchEvent) {
+    function handlePointerDown(event: PointerEvent) {
       const target = event.target as Node;
       if (panelRef.current?.contains(target) || triggerRef.current?.contains(target)) {
         return;
@@ -79,18 +79,16 @@ export function AppNav() {
       }
     }
 
-    document.addEventListener("mousedown", handlePointerDown);
-    document.addEventListener("touchstart", handlePointerDown);
+    document.addEventListener("pointerdown", handlePointerDown);
     document.addEventListener("keydown", handleKeyDown);
     return () => {
-      document.removeEventListener("mousedown", handlePointerDown);
-      document.removeEventListener("touchstart", handlePointerDown);
+      document.removeEventListener("pointerdown", handlePointerDown);
       document.removeEventListener("keydown", handleKeyDown);
     };
   }, [menuOpen]);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-neutral-800 bg-[#0b0c0f]/95 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-neutral-800 bg-[#0b0c0f]/95 backdrop-blur">
       <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-3.5 sm:px-6">
         {/* Desktop layout */}
         <div className="hidden min-w-0 items-center gap-8 md:flex">
@@ -149,7 +147,7 @@ export function AppNav() {
       {menuOpen && (
         <>
           <div
-            className="fixed inset-0 z-40 animate-backdrop-in bg-black/50 md:hidden"
+            className="fixed inset-0 z-30 animate-backdrop-in bg-black/50 md:hidden"
             aria-hidden="true"
           />
           <div
@@ -158,7 +156,7 @@ export function AppNav() {
             role="dialog"
             aria-modal="true"
             aria-label="Navigation menu"
-            className="fixed left-4 right-4 top-[64px] z-50 origin-top animate-menu-in overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900/98 shadow-2xl shadow-black/50 backdrop-blur md:hidden"
+            className="fixed left-4 right-4 top-[64px] z-40 origin-top animate-menu-in overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900 shadow-2xl shadow-black/50 md:hidden"
           >
             {user?.email && (
               <div className="border-b border-neutral-800 px-4 py-3">
